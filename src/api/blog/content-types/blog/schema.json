@@ -21,13 +21,15 @@
     "Category": {
       "type": "enumeration",
       "enum": [
-        "Local",
+        "India",
         "Defence",
         "World News",
         "Environment",
         "Science",
-        "Political",
-        "Govt. schemes"
+        "Polical",
+        "Government schemes",
+        "Education",
+        "International Relations"
       ],
       "required": true
     },
