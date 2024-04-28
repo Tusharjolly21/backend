@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news",
+  "info": {
+    "singularName": "new",
+    "pluralName": "news",
+    "displayName": "News",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "NewsImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Newscontent": {
+      "type": "richtext"
+    },
+    "Summary": {
+      "type": "text"
+    },
+    "Newsdate": {
+      "type": "date"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "targetField": "Title"
+    },
+    "Newscategory": {
+      "type": "enumeration",
+      "enum": [
+        "India",
+        "Defence",
+        "World News",
+        "Environment",
+        "Science",
+        "Political",
+        "Government schemes",
+        "Education",
+        "International Relations",
+        "Technology"
+      ],
+      "required": true
+    },
+    "Author": {
+      "type": "string"
+    }
+  }
+}
