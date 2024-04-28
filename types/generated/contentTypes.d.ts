@@ -460,52 +460,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiNewNew extends Schema.CollectionType {
-  collectionName: 'news';
-  info: {
-    singularName: 'new';
-    pluralName: 'news';
-    displayName: 'News';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String & Attribute.Required & Attribute.Unique;
-    Summary: Attribute.Text & Attribute.Required;
-    slug: Attribute.UID<'api::new.new', 'Title'>;
-    featuredImage: Attribute.Media;
-    content: Attribute.Blocks;
-    Author: Attribute.String & Attribute.Required;
-    Date: Attribute.DateTime &
-      Attribute.Required &
-      Attribute.DefaultTo<'2024-04-28T04:30:00.000Z'>;
-    Category: Attribute.Enumeration<
-      [
-        'India',
-        'Defence',
-        'World News',
-        'Environment',
-        'Science',
-        'Polical',
-        'Government schemes',
-        'Education',
-        'International Relations',
-        'Technology'
-      ]
-    > &
-      Attribute.DefaultTo<'India'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -944,7 +898,6 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
-      'api::new.new': ApiNewNew;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
