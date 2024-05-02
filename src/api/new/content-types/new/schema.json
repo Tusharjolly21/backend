@@ -24,9 +24,6 @@
         "images"
       ]
     },
-    "Newscontent": {
-      "type": "richtext"
-    },
     "Summary": {
       "type": "text"
     },
@@ -56,6 +53,9 @@
     },
     "Author": {
       "type": "string"
+    },
+    "NewsContent": {
+      "type": "blocks"
     }
   }
 }

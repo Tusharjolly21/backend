@@ -474,7 +474,6 @@ export interface ApiNewNew extends Schema.CollectionType {
   attributes: {
     Title: Attribute.String & Attribute.Required;
     NewsImage: Attribute.Media;
-    Newscontent: Attribute.RichText;
     Summary: Attribute.Text;
     Newsdate: Attribute.Date;
     slug: Attribute.UID<'api::new.new', 'Title'> & Attribute.Required;
@@ -494,6 +493,7 @@ export interface ApiNewNew extends Schema.CollectionType {
     > &
       Attribute.Required;
     Author: Attribute.String;
+    NewsContent: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
