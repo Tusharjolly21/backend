@@ -29,7 +29,9 @@
         "Polical",
         "Government schemes",
         "Education",
-        "International Relations"
+        "International Relations",
+        "Sports",
+        "UPSC"
       ],
       "required": true
     },

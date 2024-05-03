@@ -390,7 +390,9 @@ export interface ApiBlogBlog extends Schema.CollectionType {
         'Polical',
         'Government schemes',
         'Education',
-        'International Relations'
+        'International Relations',
+        'Sports',
+        'UPSC'
       ]
     > &
       Attribute.Required;
