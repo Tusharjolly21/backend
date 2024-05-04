@@ -969,6 +969,39 @@ export interface ApiNewNew extends Schema.CollectionType {
   };
 }
 
+export interface ApiSingleMapSingleMap extends Schema.CollectionType {
+  collectionName: 'single_maps';
+  info: {
+    singularName: 'single-map';
+    pluralName: 'single-maps';
+    displayName: 'SingleMap';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::single-map.single-map', 'Title'>;
+    MapContent: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::single-map.single-map',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::single-map.single-map',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -991,6 +1024,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::indian-map.indian-map': ApiIndianMapIndianMap;
       'api::new.new': ApiNewNew;
+      'api::single-map.single-map': ApiSingleMapSingleMap;
     }
   }
 }

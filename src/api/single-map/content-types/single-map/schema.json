@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "single_maps",
+  "info": {
+    "singularName": "single-map",
+    "pluralName": "single-maps",
+    "displayName": "SingleMap",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "MapContent": {
+      "type": "blocks"
+    }
+  }
+}
