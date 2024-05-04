@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "indian_maps",
+  "info": {
+    "singularName": "indian-map",
+    "pluralName": "indian-maps",
+    "displayName": "IndianMap",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "StateName": {
+      "type": "string",
+      "required": true
+    },
+    "stateInfo1": {
+      "type": "string"
+    },
+    "stateInfo2": {
+      "type": "string"
+    },
+    "stateinfo3": {
+      "type": "string"
+    },
+    "slug1": {
+      "type": "uid",
+      "targetField": "stateInfo1"
+    },
+    "slug2": {
+      "type": "uid",
+      "targetField": "stateInfo2"
+    },
+    "slug3": {
+      "type": "uid",
+      "targetField": "stateinfo3"
+    }
+  }
+}

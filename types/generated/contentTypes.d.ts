@@ -362,150 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiBlogBlog extends Schema.CollectionType {
-  collectionName: 'blogs';
-  info: {
-    singularName: 'blog';
-    pluralName: 'blogs';
-    displayName: 'Blogs';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    Category: Attribute.Enumeration<
-      [
-        'India',
-        'Defence',
-        'World News',
-        'Environment',
-        'Science',
-        'Polical',
-        'Government schemes',
-        'Education',
-        'International Relations',
-        'Sports',
-        'UPSC'
-      ]
-    > &
-      Attribute.Required;
-    Summary: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 300;
-      }>;
-    Thumbnail: Attribute.Media & Attribute.Required;
-    FeaturedImage: Attribute.Media & Attribute.Required;
-    Content: Attribute.Blocks;
-    Author: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    Date: Attribute.DateTime & Attribute.Required;
-    slug: Attribute.UID<'api::blog.blog', 'Title'> & Attribute.Required;
-    isFeatured: Attribute.Boolean & Attribute.DefaultTo<false>;
-    categories: Attribute.Relation<
-      'api::blog.blog',
-      'manyToMany',
-      'api::category.category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoryCategory extends Schema.CollectionType {
-  collectionName: 'categories';
-  info: {
-    singularName: 'category';
-    pluralName: 'categories';
-    displayName: 'Category';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String & Attribute.Required & Attribute.Unique;
-    blogs: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::blog.blog'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiNewNew extends Schema.CollectionType {
-  collectionName: 'news';
-  info: {
-    singularName: 'new';
-    pluralName: 'news';
-    displayName: 'News';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String & Attribute.Required;
-    NewsImage: Attribute.Media;
-    Summary: Attribute.Text;
-    Newsdate: Attribute.Date;
-    slug: Attribute.UID<'api::new.new', 'Title'> & Attribute.Required;
-    Newscategory: Attribute.Enumeration<
-      [
-        'India',
-        'Defence',
-        'World News',
-        'Environment',
-        'Science',
-        'Political',
-        'Government schemes',
-        'Education',
-        'International Relations',
-        'Technology'
-      ]
-    > &
-      Attribute.Required;
-    Author: Attribute.String;
-    NewsContent: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -932,6 +788,187 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blogs';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    Category: Attribute.Enumeration<
+      [
+        'India',
+        'Defence',
+        'World News',
+        'Environment',
+        'Science',
+        'Polical',
+        'Government schemes',
+        'Education',
+        'International Relations',
+        'Sports',
+        'UPSC'
+      ]
+    > &
+      Attribute.Required;
+    Summary: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
+    Thumbnail: Attribute.Media & Attribute.Required;
+    FeaturedImage: Attribute.Media & Attribute.Required;
+    Content: Attribute.Blocks;
+    Author: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    Date: Attribute.DateTime & Attribute.Required;
+    slug: Attribute.UID<'api::blog.blog', 'Title'> & Attribute.Required;
+    isFeatured: Attribute.Boolean & Attribute.DefaultTo<false>;
+    categories: Attribute.Relation<
+      'api::blog.blog',
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required & Attribute.Unique;
+    blogs: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::blog.blog'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIndianMapIndianMap extends Schema.CollectionType {
+  collectionName: 'indian_maps';
+  info: {
+    singularName: 'indian-map';
+    pluralName: 'indian-maps';
+    displayName: 'IndianMap';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    StateName: Attribute.String & Attribute.Required;
+    stateInfo1: Attribute.String;
+    stateInfo2: Attribute.String;
+    stateinfo3: Attribute.String;
+    slug1: Attribute.UID<'api::indian-map.indian-map', 'stateInfo1'>;
+    slug2: Attribute.UID<'api::indian-map.indian-map', 'stateInfo2'>;
+    slug3: Attribute.UID<'api::indian-map.indian-map', 'stateinfo3'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::indian-map.indian-map',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::indian-map.indian-map',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNewNew extends Schema.CollectionType {
+  collectionName: 'news';
+  info: {
+    singularName: 'new';
+    pluralName: 'news';
+    displayName: 'News';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    NewsImage: Attribute.Media;
+    Summary: Attribute.Text;
+    Newsdate: Attribute.Date;
+    slug: Attribute.UID<'api::new.new', 'Title'> & Attribute.Required;
+    Newscategory: Attribute.Enumeration<
+      [
+        'India',
+        'Defence',
+        'World News',
+        'Environment',
+        'Science',
+        'Political',
+        'Government schemes',
+        'Education',
+        'International Relations',
+        'Technology'
+      ]
+    > &
+      Attribute.Required;
+    Author: Attribute.String;
+    NewsContent: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -942,9 +979,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::blog.blog': ApiBlogBlog;
-      'api::category.category': ApiCategoryCategory;
-      'api::new.new': ApiNewNew;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -953,6 +987,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::blog.blog': ApiBlogBlog;
+      'api::category.category': ApiCategoryCategory;
+      'api::indian-map.indian-map': ApiIndianMapIndianMap;
+      'api::new.new': ApiNewNew;
     }
   }
 }
