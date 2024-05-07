@@ -1002,6 +1002,39 @@ export interface ApiSingleMapSingleMap extends Schema.CollectionType {
   };
 }
 
+export interface ApiStaticPartStaticPart extends Schema.CollectionType {
+  collectionName: 'static_parts';
+  info: {
+    singularName: 'static-part';
+    pluralName: 'static-parts';
+    displayName: 'Static part';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String & Attribute.Required;
+    MainContent: Attribute.Blocks;
+    slug: Attribute.UID<'api::static-part.static-part', 'Title'> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::static-part.static-part',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::static-part.static-part',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1025,6 +1058,7 @@ declare module '@strapi/types' {
       'api::indian-map.indian-map': ApiIndianMapIndianMap;
       'api::new.new': ApiNewNew;
       'api::single-map.single-map': ApiSingleMapSingleMap;
+      'api::static-part.static-part': ApiStaticPartStaticPart;
     }
   }
 }

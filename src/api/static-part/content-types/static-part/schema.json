@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "static_parts",
+  "info": {
+    "singularName": "static-part",
+    "pluralName": "static-parts",
+    "displayName": "Static part"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "MainContent": {
+      "type": "blocks"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title",
+      "required": true
+    }
+  }
+}
